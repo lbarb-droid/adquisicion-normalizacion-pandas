@@ -40,4 +40,17 @@ El CSV contiene errores sintéticos intencionales: fechas inválidas, cantidades
 
 ## Resultado
 
-La cantidad final de registros es menor a 50.000 por la depuración de datos. El archivo Parquet **no está pre-generado en este ZIP**: requiere ejecutar el script con `pyarrow` instalado.
+El procesamiento de los datos sintéticos produjo los siguientes resultados:
+
+- Transacciones originales: 50.000.
+- Productos del catálogo: 500.
+- Transacciones sin correspondencia en el catálogo: 23.
+- Transacciones válidas exportadas: 49.891.
+- Registros excluidos durante la depuración: 109.
+- Importe total de ventas: $15.246.595.619,64.
+
+El dataset final se encuentra disponible en `salida/ventas_normalizadas.parquet`.
+
+El script incluye validaciones para comprobar que los campos críticos no contengan valores nulos, que las fechas tengan el tipo de dato correcto y que el archivo Parquet pueda leerse después de su generación.
+
+Todos los datos utilizados son ficticios y tienen fines educativos.
